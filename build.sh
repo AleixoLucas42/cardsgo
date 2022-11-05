@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mysql_database=cardsgo
+mysql_database=
 mysqp_psw=
 
 #FILL DOCKER COMPOSE FILE WITH CREDENTIALS

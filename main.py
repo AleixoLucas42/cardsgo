@@ -85,4 +85,4 @@ def getData():
         except Exception as error:
             print("Oops!", str(error), "occurred.")
 
-app.run(host="0.0.0.0")
+app.run(host="0.0.0.0", port=80)
