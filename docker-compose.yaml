@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+    mysql:
+        container_name: cardsgo-mysql
+        ports:
+            - '3306:3306'
+        network_mode: cardsgo
+        volumes:
+            - './database/.mysql/mysql:/var/lib/mysql'
+        environment:
+            - MYSQL_ROOT_PASSWORD={password}
+            - MYSQL_DATABASE=cardsgo
+        image: 'mysql:8'
