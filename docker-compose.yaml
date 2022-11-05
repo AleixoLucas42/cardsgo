@@ -11,3 +11,10 @@ services:
             - MYSQL_ROOT_PASSWORD={password}
             - MYSQL_DATABASE=cardsgo
         image: 'mysql:8'
+    cardsgo:
+        network_mode: cardsgo
+        depends_on:
+        - "mysql"
+        ports:
+            - '80:5000'
+        image: cardsgo

@@ -20,16 +20,13 @@ done
 
 #START DATABASE CONTAINER
 if [[ -d ./database/.mysql ]]; then
-    docker-compose up -d && echo "Started database container" || echo "Failed to start database container"
+    docker-compose up && echo "Started database container" || echo "Failed to start database container"
     echo "Imported data success, folder exists"
 else
-    docker-compose up -d && echo "Started database container" || echo "Failed to start database container"
+    docker-compose up && echo "Started database container" || echo "Failed to start database container"
     sleep 100 #SLEEP 100s
     docker exec -i cardsgo-mysql mysql -uroot -p$mysqp_psw mysql < ./database/create-db.sql && echo "Imported data success" || echo "Failed to import data to database container"
 fi
-
-#START API DATABASE
-docker run --network cardsgo -p 80:5000 cardsgo
 
 #UNDO CREDENTIALS
 sed -i "s/=$mysqp_psw/={password}/g" docker-compose.yaml
