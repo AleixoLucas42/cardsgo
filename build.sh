@@ -24,7 +24,7 @@ if [[ -d ./database/.mysql ]]; then
 else
     docker-compose up -d && echo "Waiting to import data to database container" || echo "Failed to start database container"
     sleep 100 #SLEEP 100s
-    docker exec -i cardsgo-mysql mysql -uroot -p$mysqp_psw mysql < ./database/create-db.sql && echo "Imported data success" || echo "Failed to import data to database container"
+    docker exec -i cardsgo-mysql mysql -uroot -p$mysql_psw mysql < ./database/create-db.sql && echo "Imported data success" || echo "Failed to import data to database container"
 fi
 
 #UNDO CREDENTIALS
