@@ -29,5 +29,3 @@ fi
 
 #UNDO CREDENTIALS
 sed -i "s/=$mysql_psw/={password}/g" docker-compose.yaml
-
-while true; do sleep 60; git -C /home/ubuntu/cardsgo pull; done
