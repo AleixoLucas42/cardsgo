@@ -14,7 +14,7 @@ function addItem(list, item) {
 
 function showNotification(item, status, msg) {
     UIkit.notification({
-        message: `${msg} -> ${item.detail[1].id}`,
+        message: `${msg}: ${item.detail[1].id}`,
         pos: 'bottom-right',
         status,
         timeout: 5000
@@ -209,11 +209,11 @@ function addCard(cardName, col) {
 
     var innerDiv = document.createElement('div');
     innerDiv.textContent = cardName;
-    innerDiv.className = 'uk-card uk-card-default uk-card-body uk-card-small';
+    innerDiv.className = 'uk-card uk-card-default uk-card-body uk-card-small uk-background-primary uk-light';
 
     iDiv.appendChild(innerDiv);
     UIkit.notification({
-        message: `NEW ITEM -> ${cardName}`,
+        message: `NEW ITEM: ${cardName}`,
         pos: 'bottom-right',
         timeout: 5000
     });
