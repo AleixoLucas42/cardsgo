@@ -11,18 +11,13 @@ docker network create cardsgo
 #BUILD DOCKERFILE
 docker build -t cardsgo . --quiet && echo "Docker build success" || echo "Docker build failed"
 
-#STOPPING CONTAINERS
-docker container ls | cut -d " " -f1 | grep -v CONTAINER | while read container
-do
-    echo "Stopping container $container"
-done
-
 #START DATABASE CONTAINER
 if [[ -d ./database/.mysql ]]; then
     docker-compose up -d && echo "Started database container" || echo "Failed to start database container"
     echo "Imported data success, folder exists"
 else
-    docker-compose up -d && echo "Waiting to import data to database container" || echo "Failed to start database container"
+    docker-compose stop
+    docker-compose up -d
     sleep 100 #SLEEP 100s
     docker exec -i cardsgo-mysql mysql -uroot -p$mysql_psw mysql < ./database/create-db.sql && echo "Imported data success" || echo "Failed to import data to database container"
 fi
