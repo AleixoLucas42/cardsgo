@@ -12,9 +12,18 @@ services:
             - MYSQL_DATABASE=cardsgo
         image: 'mysql:8'
     cardsgo:
+        container_name: cardsgo
         network_mode: cardsgo
         depends_on:
         - "mysql"
-        ports:
-            - '127.0.0.1:80:80'
         image: cardsgo
+    nginx:
+        image: nginx
+        container_name: nginx
+        depends_on:
+            - cardsgo
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        network_mode: cardsgo
+        ports:
+            - 80:80

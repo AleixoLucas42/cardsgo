@@ -4,8 +4,7 @@ WORKDIR /app
 
 RUN pip install flask_cors mysql.connector flask mysql-connector-python
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5000
 
 COPY . .
 
