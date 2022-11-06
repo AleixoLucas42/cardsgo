@@ -7,11 +7,12 @@ from flask_cors import CORS
 from datetime import datetime  
 from datetime import timedelta  
 from flask import Flask, request, jsonify, render_template
+import os
 
 database_db = 'cardsgo'
-database_host = 'cardsgo-mysql'
-database_user = 'root'
-database_passwd = '123456789'
+database_host = os.getenv('database_host')
+database_user = os.getenv('database_user')
+database_passwd = os.getenv('database_psw')
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net"}})

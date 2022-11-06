@@ -14,6 +14,10 @@ services:
     cardsgo:
         container_name: cardsgo
         network_mode: cardsgo
+        environment:
+            - database_psw={password}
+            - database_user=root
+            - database_host=cardsgo-mysql
         depends_on:
         - "mysql"
         image: cardsgo
