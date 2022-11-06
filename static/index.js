@@ -130,7 +130,7 @@ function getCards(user) {
         redirect: 'follow'
     };
 
-    return fetch(`http://localhost:5000/cards?project=${user}`, requestOptions)
+    return fetch(`http://cardsgo.ddns.net/cards?project=${user}`, requestOptions)
         .then(response => response.text())
         .then(result => { return result })
         .catch(error => console.log('error', error));
