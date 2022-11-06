@@ -14,7 +14,7 @@ database_user = 'root'
 database_passwd = '123456789'
 
 app = Flask(__name__)
-CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net"}})
+CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net/"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
