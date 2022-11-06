@@ -119,7 +119,7 @@ function saveCards(){
         body: JSON.stringify(send_data),
         redirect: 'follow'
     };
-    fetch("http://localhost:5000/cards", requestOptions)
+    fetch("http://cardsgo.ddns.net/cards", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
