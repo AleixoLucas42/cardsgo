@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mysqp_psw=
+export $(cat .env | xargs)
 
 #FILL DOCKER COMPOSE FILE WITH CREDENTIALS
 sed -i "s/{password}/$mysqp_psw/g" docker-compose.yaml
