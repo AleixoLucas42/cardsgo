@@ -9,7 +9,7 @@ from datetime import timedelta
 from flask import Flask, request, jsonify, render_template
 
 database_db = 'cardsgo'
-database_host = 'cardsgo-mysql.cardsgo'
+database_host = 'cardsgo-mysql'
 database_user = 'root'
 database_passwd = '123456789'
 
