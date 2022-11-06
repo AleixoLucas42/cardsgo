@@ -2,7 +2,7 @@ FROM python:3.10.4-bullseye
 
 WORKDIR /app
 
-RUN pip install flask_cors mysql.connector flask mysql-connector-python
+RUN pip install flask_cors mysql.connector flask mysql-connector-python flask-cors
 
 EXPOSE 5000
 
