@@ -19,10 +19,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 
 @app.route("/")
+@cross_origin()
 def index():
     return render_template('index.html')
 
 @app.route('/cards', methods=['POST'])
+@cross_origin()
 def saveData():
     data = request.json
     expiration = datetime.now() + timedelta(days=30)
@@ -45,6 +47,7 @@ def saveData():
     return jsonify(data)
 
 @app.route('/cards', methods=['GET'])
+@cross_origin()
 def getData():
     global raw_cards
     now = datetime.now()
