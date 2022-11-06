@@ -3,7 +3,7 @@
 export $(cat .env | xargs)
 
 #FILL DOCKER COMPOSE FILE WITH CREDENTIALS
-sed -i "s/{password}/$mysqp_psw/g" docker-compose.yaml
+sed -i "s/{password}/$mysql_psw/g" docker-compose.yaml
 
 #NETWORK CREATE
 docker network create cardsgo
@@ -28,4 +28,4 @@ else
 fi
 
 #UNDO CREDENTIALS
-sed -i "s/=$mysqp_psw/={password}/g" docker-compose.yaml
+sed -i "s/=$mysql_psw/={password}/g" docker-compose.yaml
