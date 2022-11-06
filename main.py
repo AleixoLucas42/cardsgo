@@ -14,7 +14,8 @@ database_user = 'root'
 database_passwd = '123456789'
 
 app = Flask(__name__)
-
+CORS(app, resources={r"*": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 
 @app.route("/")
