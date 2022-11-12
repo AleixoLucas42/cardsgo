@@ -35,7 +35,7 @@ def delete_expired_cards():
     delete = e.fetchall()
     for i in delete:
         print("Apagando id {} referente ao projeto {} ".format(i[0], i[1]))
-        e.execute("DELETE FROM cardsgo.cardsgo_data WHERE id_cardsgo={}".format(i[0]))
+        e.execute("DELETE FROM cardsgo.cardsgo_data WHERE id_cardsgo='{}'".format(i[0]))
         result = e.fetchall()
         print(result)
 
