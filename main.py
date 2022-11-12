@@ -22,7 +22,7 @@ CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net"}})
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 
 def delete_expired_cards():
-    print("Verificando se há registros a serem excluidos", file=sys.stdout)
+    print("Verificando se há registros a serem excluidos", flush=True)
     conn = mysql.connector.connect(
     host = database_host,
     user = database_user,
@@ -33,7 +33,7 @@ def delete_expired_cards():
     e = conn.cursor()
     e.execute("select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%d') > DATE_FORMAT(NOW(), '%Y-%m-%d'")
     delete = e.fetchall()
-    print(e, file=sys.stdout)
+    print(e, flush=True)
     time.sleep(30)
 
 @app.route("/")
@@ -66,7 +66,7 @@ def saveData():
 @app.route('/cards', methods=['GET'])
 def getData():
     delete_expired_cards()
-    print("OK", file=sys.stdout)
+    print("OK", flush=True)
     global raw_cards
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%m") #calculate a month+
