@@ -37,7 +37,7 @@ def delete_expired_cards():
         print("Apagando id {} referente ao projeto {} ".format(i[0], i[1]))
         e.execute("DELETE FROM cardsgo.cardsgo_data WHERE id_cardsgo={}".format(i[0]))
         result = e.fetchall()
-        return result
+        print(result)
 
 @app.route("/")
 def index():
