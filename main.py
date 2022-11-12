@@ -20,6 +20,21 @@ CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net"}})
 
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 
+def delete_expired_cards():
+    print("Verificando se há registros a serem excluidos")
+    conn = mysql.connector.connect(
+    host = database_host,
+    user = database_user,
+    password = database_passwd,
+    database = database_db,
+    auth_plugin='mysql_native_password'
+    )
+    e = conn.cursor()
+    e.execute("select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%d') > DATE_FORMAT(NOW(), '%Y-%m-%d'")
+    delete = e.fetchall()
+    print(e)
+    time.sleep(30)
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -49,6 +64,7 @@ def saveData():
 
 @app.route('/cards', methods=['GET'])
 def getData():
+    delete_expired_cards()
     global raw_cards
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%m") #calculate a month+
@@ -89,18 +105,3 @@ def getData():
             print("Oops!", str(error), "occurred.")
 
 app.run(host="0.0.0.0", port=5000)
-print("chegou aqui")
-while True:
-    print("Verificando se há registros a serem excluidos")
-    conn = mysql.connector.connect(
-    host = database_host,
-    user = database_user,
-    password = database_passwd,
-    database = database_db,
-    auth_plugin='mysql_native_password'
-    )
-    e = conn.cursor()
-    e.execute("select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%d') > DATE_FORMAT(NOW(), '%Y-%m-%d'")
-    delete = e.fetchall()
-    print(e)
-    time.sleep(30)
