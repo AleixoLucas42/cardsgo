@@ -8,6 +8,7 @@ from datetime import datetime
 from datetime import timedelta  
 from flask import Flask, request, jsonify, render_template
 import os
+import time
 
 database_db = 'cardsgo'
 database_host = os.getenv('database_host')
@@ -102,3 +103,4 @@ while True:
     e.execute("select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%d') > DATE_FORMAT(NOW(), '%Y-%m-%d'")
     delete = e.fetchall()
     print(e)
+    time.sleep(30)
