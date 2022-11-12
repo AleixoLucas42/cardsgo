@@ -30,7 +30,8 @@ def delete_expired_cards():
     auth_plugin='mysql_native_password'
     )
     e = conn.cursor()
-    e.execute("select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%"+"d') > DATE_FORMAT(NOW(), '%Y-%m-%"+"d'")
+    query = "select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%"+"d') > DATE_FORMAT(NOW(), '%Y-%m-%"+"d'"
+    e.exeute(query)
     delete = e.fetchall()
     print(e)
     time.sleep(30)
