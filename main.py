@@ -34,7 +34,7 @@ def delete_expired_cards():
     print(query)
     e.execute(query)
     delete = e.fetchall()
-    print(e)
+    print(delete)
     time.sleep(30)
 
 @app.route("/")
