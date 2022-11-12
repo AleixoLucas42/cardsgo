@@ -7,7 +7,7 @@ CREATE TABLE `cardsgo`.`cardsgo_data` (
   `data` VARCHAR(999) NOT NULL,
   PRIMARY KEY (`id_cardsgo`));
 
-INSERT INTO `cardsgo`.`cardsgo_data` (`expiration`, `user`, `data`) VALUES ('2022-06-24 03:48:40', 'aleixo1', '{\"todo\": [\"Database card\"],\"doing\": [],\"done\": [],\"blocked\": []}');
+INSERT INTO `cardsgo`.`cardsgo_data` (`expiration`, `user`, `data`) VALUES ('2022-06-24', 'aleixo1', '{\"todo\": [\"Database card\"],\"doing\": [],\"done\": [],\"blocked\": []}');
 
 
-UPDATE cardsgo.cardsgo_data SET expiration = adddate(now(), INTERVAL 1 MONTH) WHERE user = 'aleixo1';
+UPDATE cardsgo.cardsgo_data SET expiration = adddate(DATE_FORMAT(NOW(), '%Y-%m-%d'), INTERVAL 1 MONTH) WHERE user = 'aleixo1';

@@ -27,6 +27,7 @@ def index():
 def saveData():
     data = request.json
     expiration = datetime.now() + timedelta(days=30)
+    expiration = expiration.strftime("%Y-%m-%m")
     user = data['user']
     del data['user']
     json = str(data)
@@ -49,7 +50,7 @@ def saveData():
 def getData():
     global raw_cards
     now = datetime.now()
-    dt_string = now.strftime("%Y-%m-%m %H:%M:%S") #calculate a month+
+    dt_string = now.strftime("%Y-%m-%m") #calculate a month+
     u = request.args.get('project')
     conn = mysql.connector.connect(
     host = database_host,
