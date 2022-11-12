@@ -31,6 +31,7 @@ def delete_expired_cards():
     )
     e = conn.cursor()
     query = "select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%"+"d') > DATE_FORMAT(NOW(), '%Y-%m-%"+"d'"
+    print(query)
     e.execute(query)
     delete = e.fetchall()
     print(e)
