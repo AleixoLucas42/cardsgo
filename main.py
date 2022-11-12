@@ -17,7 +17,6 @@ database_passwd = os.getenv('database_psw')
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net"}})
-logging.basicConfig(level=logging.DEBUG)
 
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 
