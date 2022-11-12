@@ -34,8 +34,7 @@ def delete_expired_cards():
     e.execute(query)
     delete = e.fetchall()
     for i in delete:
-        print(type(i))
-        print(i)
+        print(i[0])
 
 @app.route("/")
 def index():
