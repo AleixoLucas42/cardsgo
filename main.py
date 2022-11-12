@@ -89,7 +89,7 @@ def getData():
             print("Oops!", str(error), "occurred.")
 
 app.run(host="0.0.0.0", port=5000)
-
+print("chegou aqui")
 while True:
     print("Verificando se há registros a serem excluidos")
     conn = mysql.connector.connect(
