@@ -9,7 +9,7 @@ from datetime import timedelta
 from flask import Flask, request, jsonify, render_template
 import os
 import time
-import sys
+import logging
 
 database_db = 'cardsgo'
 database_host = os.getenv('database_host')
@@ -18,11 +18,12 @@ database_passwd = os.getenv('database_psw')
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net"}})
+logging.basicConfig(level=logging.DEBUG)
 
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 
 def delete_expired_cards():
-    print("Verificando se há registros a serem excluidos", flush=True)
+    app.logger.info("Verificando se há registros a serem excluidos")
     conn = mysql.connector.connect(
     host = database_host,
     user = database_user,
@@ -33,7 +34,7 @@ def delete_expired_cards():
     e = conn.cursor()
     e.execute("select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%d') > DATE_FORMAT(NOW(), '%Y-%m-%d'")
     delete = e.fetchall()
-    print(e, flush=True)
+    app.logger.info(e)
     time.sleep(30)
 
 @app.route("/")
@@ -66,7 +67,6 @@ def saveData():
 @app.route('/cards', methods=['GET'])
 def getData():
     delete_expired_cards()
-    print("OK", flush=True)
     global raw_cards
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%m") #calculate a month+
