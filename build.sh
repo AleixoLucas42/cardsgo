@@ -2,6 +2,8 @@
 
 export $(cat .env | xargs)
 
+echo "BRANCH: $(git branch)"
+
 #FILL DOCKER COMPOSE FILE WITH CREDENTIALS
 sed -i "s/{password}/$mysql_psw/g" docker-compose.yaml
 
