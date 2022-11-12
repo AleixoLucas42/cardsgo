@@ -30,10 +30,11 @@ def delete_expired_cards():
     auth_plugin='mysql_native_password'
     )
     e = conn.cursor()
-    query = "select * from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%"+"d') > DATE_FORMAT(NOW(), '%Y-%m-%"+"d')"
+    query = "select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%"+"d') > DATE_FORMAT(NOW(), '%Y-%m-%"+"d')"
     e.execute(query)
     delete = e.fetchall()
-    print(delete)
+    for i in delete():
+        print(i)
 
 @app.route("/")
 def index():
