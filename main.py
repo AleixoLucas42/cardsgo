@@ -88,3 +88,17 @@ def getData():
             print("Oops!", str(error), "occurred.")
 
 app.run(host="0.0.0.0", port=5000)
+
+while True:
+    print("Verificando se há registros a serem excluidos")
+    conn = mysql.connector.connect(
+    host = database_host,
+    user = database_user,
+    password = database_passwd,
+    database = database_db,
+    auth_plugin='mysql_native_password'
+    )
+    e = conn.cursor()
+    e.execute("select id_cardsgo from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%d') > DATE_FORMAT(NOW(), '%Y-%m-%d'")
+    delete = e.fetchall()
+    print(e)
