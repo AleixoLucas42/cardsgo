@@ -15,7 +15,6 @@ docker build -t cardsgo . --quiet && echo "Docker build success" || echo "Docker
 
 #START DATABASE CONTAINER
 if [[ -d ./database/.mysql ]]; then
-    docker-compose stop
     docker-compose up -d
     echo "Imported data success, folder exists"
 else
