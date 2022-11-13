@@ -27,3 +27,9 @@ Actually, every minute the cronjob run `git pull` in the repository, and when a 
 <hr>
 
 Well, this is it, nothing special, and if is usefull for you, you can access [CARDS GO!](http://cardsgo.ddns.net)
+<hr>
+<img src="https://sonarcloud.io/api/project_badges/measure?project=AleixoLucas42_cardsgo&metric=vulnerabilities" alt="vulnerabilities"/>
+<img src="https://sonarcloud.io/api/project_badges/measure?project=AleixoLucas42_cardsgo&metric=bugs" alt="bugs"/>
+<img src="https://sonarcloud.io/api/project_badges/measure?project=AleixoLucas42_cardsgo&metric=security_rating" alt="security_rating"/>
+<img src="https://sonarcloud.io/api/project_badges/measure?project=AleixoLucas42_cardsgo&metric=code_smells" alt="code_smells"/>
+<img src="https://sonarcloud.io/api/project_badges/measure?project=AleixoLucas42_cardsgo&metric=reliability_rating" alt="reliability_rating"/>
