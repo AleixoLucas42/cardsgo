@@ -119,7 +119,7 @@ function saveCards(){
         body: JSON.stringify(send_data),
         redirect: 'follow'
     };
-    fetch("http://cardsgo.ddns.net/cards", requestOptions)
+    fetch("https://cardsgo.ddns.net/cards", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -130,7 +130,7 @@ function getCards(user) {
         redirect: 'follow'
     };
 
-    return fetch(`http://cardsgo.ddns.net/cards?project=${user}`, requestOptions)
+    return fetch(`https://cardsgo.ddns.net/cards?project=${user}`, requestOptions)
         .then(response => response.text())
         .then(result => { return result })
         .catch(error => console.log('error', error));
