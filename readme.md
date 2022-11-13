@@ -28,6 +28,8 @@ Actually, every minute the cronjob run `git pull` in the repository, and when a 
 
 Well, this is it, nothing special, and if is usefull for you, you can access [CARDS GO!](http://cardsgo.ddns.net)
 <hr>
+
+[Sonarqube](https://sonarcloud.io/project/overview?id=AleixoLucas42_cardsgo)
 <p float="left">
    <img src="https://sonarcloud.io/api/project_badges/measure?project=AleixoLucas42_cardsgo&metric=vulnerabilities" alt="vulnerabilities"/>
    <img src="https://sonarcloud.io/api/project_badges/measure?project=AleixoLucas42_cardsgo&metric=bugs" alt="bugs"/>

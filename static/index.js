@@ -95,11 +95,11 @@ setTimeout(() => {
 
 //FUNCTIONS
 function saveCards(){
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-    var user = urlParams.get('project');
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let user = urlParams.get('project');
 
-    var send_data = {
+    let send_data = {
         user: user,
         todo: todo.map(t => t),
         doing: doing.map(d => d),
@@ -108,12 +108,12 @@ function saveCards(){
     }
     console.log(send_data);
 
-    var myHeaders = new Headers();
+    let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
 
 
-    var requestOptions = {
+    let requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: JSON.stringify(send_data),
@@ -125,7 +125,7 @@ function saveCards(){
     .catch(error => console.log('error', error));
 }
 function getCards(user) {
-    var requestOptions = {
+    let requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
@@ -136,7 +136,7 @@ function getCards(user) {
         .catch(error => console.log('error', error));
 }
 function init() {
-    var expiration = null;
+    let expiration = null;
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const user = urlParams.get('project');
@@ -149,8 +149,8 @@ function init() {
         }
         window.location.href = `https://cardsgo.ddns.net/cards?project=${project}`;
     }
-    var cards = null;
-    var template = null;
+    let cards = null;
+    let template = null;
 
     document.getElementById('idproject').innerHTML = user;
 
@@ -191,9 +191,9 @@ function init() {
     
 }
 function triggerSave(){
-    var input = document.getElementsByTagName('input');
-    var timeout = null;
-    var doc = this;
+    let input = document.getElementsByTagName('input');
+    let timeout = null;
+    let doc = this;
     input.addEventListener('keyup', function(e){
         clearTimeout(timeout);
         timeout = setTimeout(function (){
@@ -202,12 +202,12 @@ function triggerSave(){
     })
 }
 function addCard(cardName, col) {
-    var iDiv = document.createElement('div');
+    let iDiv = document.createElement('div');
     iDiv.id = cardName;
     iDiv.className = 'uk-margin';
     document.getElementById(col).appendChild(iDiv);
 
-    var innerDiv = document.createElement('div');
+    let innerDiv = document.createElement('div');
     innerDiv.textContent = cardName;
     innerDiv.className = 'uk-card uk-card-default uk-card-body uk-card-small uk-background-primary uk-light';
 
