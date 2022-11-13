@@ -60,7 +60,7 @@ def saveData():
     auth_plugin='mysql_native_password'
     )
     e = conn.cursor()
-    e.execute("UPDATE cardsgo.cardsgo_data SET expiration = '{}', data = '{}' WHERE (user = '{}');".format(expiration, json.replace('\'', '\\"'), user))
+    e.execute("UPDATE cardsgo.cardsgo_data SET expiration = '%(e)s', data = '%(d)s' WHERE (user = '%(u)s');", {'e': expiration, 'd': json.replace('\'', '\\"'), 'u': user})
     conn.commit()
     print(e.rowcount, "record(s) affected")
 
