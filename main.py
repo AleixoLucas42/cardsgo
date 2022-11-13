@@ -35,7 +35,7 @@ def delete_expired_cards():
     delete = e.fetchall()
     for i in delete:
         print("Apagando id {} referente ao projeto {} ".format(i[0], i[1]))
-        e.execute("DELETE FROM cardsgo.cardsgo_data WHERE id_cardsgo='%(card)s'", {'card': i[0]})
+        e.execute("DELETE FROM cardsgo.cardsgo_data WHERE id_cardsgo='%(card)s'", {"card": i[0]})
         conn.commit()
         print(e.rowcount, "record(s) deleted")
 
@@ -60,7 +60,7 @@ def saveData():
     auth_plugin='mysql_native_password'
     )
     e = conn.cursor()
-    e.execute("UPDATE cardsgo.cardsgo_data SET expiration = '%(e)s', data = '%(d)s' WHERE (user = '%(u)s');", {'e': expiration, 'd': json.replace('\'', '\\"'), 'u': user})
+    e.execute("UPDATE cardsgo.cardsgo_data SET expiration = '%(e)s', data = '%(d)s' WHERE (user = '%(u)s');", {"e": expiration, "d": json.replace('\'', '\\"'), "u": user})
     conn.commit()
     print(e.rowcount, "record(s) affected")
 
