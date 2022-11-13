@@ -147,7 +147,7 @@ function init() {
         while (project === "null" || project === ""){
             project = prompt("Project:");
         }
-        window.location.href = `${window.location.search}?project=${project}`;
+        window.location.href = `https://cardsgo.ddns.net/cards?project=${project}`;
     }
     var cards = null;
     var template = null;
