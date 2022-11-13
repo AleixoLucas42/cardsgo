@@ -38,6 +38,7 @@ services:
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/default.conf
             - ./certbot/www:/var/www/certbot/:ro
+            - ./certbot/conf/:/etc/nginx/ssl/:ro
         network_mode: cardsgo
         ports:
             - 80:80
