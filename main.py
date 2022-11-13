@@ -44,7 +44,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/cards', methods=['POST'])
-def saveData():
+def save_data():
     data = request.json
     expiration = datetime.now() + timedelta(days=30)
     expiration = expiration.strftime("%Y-%m-%m")
@@ -67,7 +67,7 @@ def saveData():
     return jsonify(data)
 
 @app.route('/cards', methods=['GET'])
-def getData():
+def get_data():
     delete_expired_cards()
     global raw_cards
     now = datetime.now()
