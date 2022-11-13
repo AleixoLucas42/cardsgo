@@ -44,7 +44,7 @@ services:
             - 80:80
             - 443:443
     sonarqube:
-        image: sonarqube:9.6.1-community
+        image: sonarqube:9.7.1-community
         container_name: sonarqube
         hostname: sonarqube
         ports:
