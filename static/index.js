@@ -1,4 +1,3 @@
-//VAR
 const todo = [];
 const doing = [];
 const done = [];
@@ -20,7 +19,6 @@ function showNotification(item, status, msg) {
         timeout: 5000
     });
 }
-
 
 function createTriggerTodo() {
     UIkit.util.on('#Todo', 'removed', function (item) {
@@ -81,7 +79,6 @@ function createTriggerTrash() {
 }
 
 function createTriggers() {
-    //NOTIFICATIONS
     createTriggerTodo();
     createTriggerDoing();
     createTriggerDone();
@@ -93,7 +90,6 @@ setTimeout(() => {
     createTriggers();
 }, 1000);
 
-//FUNCTIONS
 function saveCards(){
     let queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
@@ -110,8 +106,6 @@ function saveCards(){
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
-
 
     let requestOptions = {
         method: 'POST',
@@ -136,14 +130,13 @@ function getCards(user) {
         .catch(error => console.log('error', error));
 }
 function init() {
-    let expiration = null;
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const user = urlParams.get('project');
     //tem um bug aqui que se vc apertar enter duas vezes na hora de pedir o usuário ele cria um usuário com o nome do parametro
     if (!user){
         console.log('Project empty');
-        project = prompt("Project:");
+        let project = prompt("Project:");
         while (project === "null" || project === ""){
             project = prompt("Project:");
         }
@@ -156,7 +149,6 @@ function init() {
 
     getCards(user).then(apiResult => {
         template = JSON.parse(apiResult);
-        expiration = template[0].expiration;
         cards = JSON.parse(template[0].data);
         cards.todo.forEach(element => {
             addCard(element, 'Todo')
@@ -179,7 +171,6 @@ function init() {
         UIkit.util.on('#add-modal-prompt', 'click', function (e) {
             e.preventDefault();
             e.target.blur();
-
             UIkit.modal.prompt('Item name:', '').then(function (name) {
                 if (name) {
                     todo.push(name);

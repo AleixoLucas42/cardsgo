@@ -16,7 +16,7 @@ database_user = os.getenv('database_user')
 database_passwd = os.getenv('database_psw')
 
 app = Flask(__name__)
-CORS(app, resources={r"*": {"origins": "http://cardsgo.ddns.net"}})
+CORS(app, resources={r"*": {"origins": "https://cardsgo.ddns.net"}})
 
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 
@@ -44,7 +44,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/cards', methods=['POST'])
-def saveData():
+def save_data():
     data = request.json
     expiration = datetime.now() + timedelta(days=30)
     expiration = expiration.strftime("%Y-%m-%m")
@@ -67,7 +67,7 @@ def saveData():
     return jsonify(data)
 
 @app.route('/cards', methods=['GET'])
-def getData():
+def get_data():
     delete_expired_cards()
     global raw_cards
     now = datetime.now()
