@@ -149,13 +149,11 @@ function init() {
         }
         //window.location.href = `${window.location.search}?project=${project}`;
         if(isValidUrl(document.location.hash.slice(1))) {
-            document.location = `${window.location.search}?project=${project}`;;
+            document.location = `https://cardsgo.ddns.net?project=${project}`;;
          }
     }
     let cards = null;
     let template = null;
-
-    //document.getElementById('idproject').innerHTML = user;
 
     const rootDiv = document.getElementById('idproject');
     rootDiv.innerText = user;
