@@ -3,6 +3,13 @@ const doing = [];
 const done = [];
 const blocked = [];
 
+function isValidUrl(url) {
+    if(url.startsWith("https://cardsgo.ddns.net/")) {
+      return true;
+    }
+  
+    return false;
+  }
 function removeItem(list, item) {
     list.splice(list.indexOf(item.detail[1].id), 1);
 }
@@ -140,7 +147,10 @@ function init() {
         while (project === "null" || project === ""){
             project = prompt("Project:");
         }
-        window.location.href = `${window.location.search}?project=${project}`;
+        //window.location.href = `${window.location.search}?project=${project}`;
+        if(isValidUrl(document.location.hash.slice(1))) {
+            document.location = `${window.location.search}?project=${project}`;;
+         }
     }
     let cards = null;
     let template = null;
@@ -148,8 +158,7 @@ function init() {
     //document.getElementById('idproject').innerHTML = user;
 
     const rootDiv = document.getElementById('idproject');
-    const hash = decodeURIComponent(location.hash.substr(1));
-    rootDiv.innerText = hash;
+    rootDiv.innerText = user;
 
     getCards(user).then(apiResult => {
         template = JSON.parse(apiResult);
