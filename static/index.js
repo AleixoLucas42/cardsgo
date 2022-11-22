@@ -3,13 +3,6 @@ const doing = [];
 const done = [];
 const blocked = [];
 
-function isValidUrl(url) {
-    if(url.startsWith("https://cardsgo.ddns.net/")) {
-      return true;
-    }
-  
-    return false;
-  }
 function removeItem(list, item) {
     list.splice(list.indexOf(item.detail[1].id), 1);
 }
@@ -147,10 +140,7 @@ function init() {
         while (project === "null" || project === ""){
             project = prompt("Project:");
         }
-        //window.location.href = `${window.location.search}?project=${project}`;
-        if(isValidUrl(document.location.hash.slice(1))) {
-            document.location = `https://cardsgo.ddns.net?project=${project}`;;
-         }
+        window.location.href = `https://cardsgo.ddns.net?project=${project}`
     }
     let cards = null;
     let template = null;
