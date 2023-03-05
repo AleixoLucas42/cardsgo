@@ -1,12 +1,23 @@
-FROM python:3.10.4-bullseye
+FROM python:slim-buster
 
 WORKDIR /app
 
+ARG USERNAME=cardsgo
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+
+USER $USERNAME
+
 RUN pip install flask_cors mysql.connector flask mysql-connector-python flask-cors
 
-EXPOSE 5000
+COPY main.py .
+COPY templates/index.html /app/templates/index.html
+COPY static/index.js /app/static/index.js
 
-COPY . .
+EXPOSE 5000
 
 ENTRYPOINT [ "python" ]
 CMD [ "-u", "main.py" ]
