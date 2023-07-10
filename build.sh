@@ -15,14 +15,14 @@ docker build -t cardsgo . --quiet && echo "Docker build success" || echo "Docker
 
 #START DATABASE CONTAINER
 if [[ -d ./database/.mysql ]]; then
-    docker-compose up -d
+    docker compose up -d
     echo "Imported data success, folder exists"
 else
-    docker-compose stop
-    docker-compose up -d
+    docker compose stop
+    docker compose up -d
     echo "Waiting to import .sql to database"
     sleep 130 #SLEEP 130s
-    #Upload .sql file to database
+    Upload .sql file to database
     docker exec -i cardsgo-mysql mysql -uroot -p$mysql_psw mysql < ./database/create-db.sql && echo "Imported data success" || echo "Failed to import data to database container"
 fi
 

@@ -2,6 +2,7 @@ const todo = [];
 const doing = [];
 const done = [];
 const blocked = [];
+const cardsgo_url = "https://" + window.location.host
 
 function removeItem(list, item) {
     list.splice(list.indexOf(item.detail[1].id), 1);
@@ -113,7 +114,7 @@ function saveCards(){
         body: JSON.stringify(send_data),
         redirect: 'follow'
     };
-    fetch("https://cardsgo.ddns.net:8400/cards", requestOptions)
+    fetch( cardsgo_url + "/cards", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -124,7 +125,7 @@ function getCards(user) {
         redirect: 'follow'
     };
 
-    return fetch(`https://cardsgo.ddns.net:8400/cards?project=${user}`, requestOptions)
+    return fetch(cardsgo_url + `/cards?project=${user}`, requestOptions)
         .then(response => response.text())
         .then(result => { return result })
         .catch(error => console.log('error', error));
@@ -140,7 +141,7 @@ function init() {
         while (project === "null" || project === ""){
             project = prompt("Project:");
         }
-        window.location.href = `https://cardsgo.ddns.net:8400?project=${project}`
+        window.location.href = cardsgo_url + `?project=${project}`
     }
     let cards = null;
     let template = null;
