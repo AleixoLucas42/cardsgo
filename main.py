@@ -14,9 +14,15 @@ database_db = 'cardsgo'
 database_host = os.getenv('database_host')
 database_user = os.getenv('database_user')
 database_passwd = os.getenv('database_psw')
+allowed_origins = [
+    "https://cardsgo.ddns.net",
+    "http://cardsgo.ddns.net",
+    "https://cardsgo.aleixohome.lan",
+    "http://cardsgo.aleixohome.lan"
+]
 
 app = Flask(__name__)
-CORS(app, resources={r"*": {"origins": "https://cardsgo.ddns.net"}})
+CORS(app, resources={r"*": {"origins": allowed_origins}})
 
 raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
 

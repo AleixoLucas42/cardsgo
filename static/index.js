@@ -2,7 +2,7 @@ const todo = [];
 const doing = [];
 const done = [];
 const blocked = [];
-const cardsgo_url = "https://" + window.location.host
+const cardsgo_url = window.location.protocol + "//" + window.location.host
 
 function removeItem(list, item) {
     list.splice(list.indexOf(item.detail[1].id), 1);
