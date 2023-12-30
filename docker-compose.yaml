@@ -20,7 +20,7 @@ services:
             - database_host=cardsgo-mysql
         depends_on:
         - "mysql"
-        image: cardsgo
+        image: aleixolucas/cardsgo
     certbot:
         container_name: certbot
         depends_on:

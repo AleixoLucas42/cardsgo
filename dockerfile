@@ -1,4 +1,4 @@
-FROM python:slim-buster
+FROM python:3.9.18-bullseye
 
 WORKDIR /app
 
@@ -11,7 +11,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 USER $USERNAME
 
-RUN pip install flask_cors mysql.connector flask mysql-connector-python flask-cors
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 COPY main.py .
 COPY templates/index.html /app/templates/index.html
