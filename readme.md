@@ -26,7 +26,7 @@ Actually, every minute the cronjob run `git pull` in the repository, and when a 
 (I could do with cloudbuild or jenkins, etc... but I made this way just to be fast)
 <hr>
 
-Well, this is it, nothing special, and if is usefull for you, you can access [CARDS GO!](http://cardsgo.ddns.net:8400)
+Well, this is it, nothing special, and if is usefull for you, you can access [CARDS GO!](https://cardsgo.ddns.net)
 <hr>
 
 [Sonarqube](https://sonarcloud.io/project/overview?id=AleixoLucas42_cardsgo)
