@@ -39,7 +39,7 @@ Well, this is it, nothing special, and if is usefull for you, you can access [CA
 </p>
 
 
-<hr><hr><hr>
+<hr>
 
 ## SECOND PERSONAL CHALLENGE (because I started a homelab and I got excited)
 
