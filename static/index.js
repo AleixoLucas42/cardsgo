@@ -4,6 +4,10 @@ const done = [];
 const blocked = [];
 const cardsgo_url = window.location.protocol + "//" + window.location.host
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function removeItem(list, item) {
     list.splice(list.indexOf(item.detail[1].id), 1);
 }
@@ -92,7 +96,8 @@ setTimeout(() => {
     createTriggers();
 }, 1000);
 
-function saveCards(){
+async function saveCards(){
+    await sleep(2000);
     let queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
     let user = urlParams.get('project');
