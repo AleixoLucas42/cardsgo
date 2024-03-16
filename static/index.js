@@ -10,6 +10,7 @@ function removeItem(list, item) {
 
 function addItem(list, item) {
     list.push(item.detail[1].id);
+    saveCards();
 }
 
 function showNotification(item, status, msg) {
@@ -212,6 +213,7 @@ function addCard(cardName, col) {
     });
     
     console.log('Adedded item:', cardName);
+    saveCards();
 }
 
 setTimeout(() => {
