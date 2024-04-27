@@ -8,7 +8,7 @@ from datetime import datetime
 from datetime import timedelta  
 from flask import Flask, request, jsonify, render_template
 import os
-import time
+import bleach
 
 database_db = 'cardsgo'
 database_host = os.getenv('database_host')
@@ -41,7 +41,7 @@ def delete_expired_cards():
     delete = e.fetchall()
     for i in delete:
         print("Apagando id {} referente ao projeto {} ".format(i[0], i[1]))
-        e.execute("DELETE FROM cardsgo.cardsgo_data WHERE id_cardsgo='{}'".format(i[0]))
+        e.execute("DELETE FROM cardsgo.cardsgo_data WHERE id_cardsgo='{}'".format(bleach.clean(i[0])))
         conn.commit()
         print(e.rowcount, "record(s) deleted")
 
@@ -66,7 +66,7 @@ def save_data():
     auth_plugin='mysql_native_password'
     )
     e = conn.cursor()
-    e.execute("UPDATE cardsgo.cardsgo_data SET expiration = '{}', data = '{}' WHERE (user = '{}');".format(expiration, json.replace('\'', '\\"'), user))
+    e.execute("UPDATE cardsgo.cardsgo_data SET expiration = '{}', data = '{}' WHERE (user = '{}');".format(bleach.clean(expiration), bleach.clean(json.replace('\'', '\\"')), bleach.clean(user)))
     conn.commit()
     print(e.rowcount, "record(s) affected")
 
@@ -87,11 +87,11 @@ def get_data():
     auth_plugin='mysql_native_password'
     )
     e = conn.cursor()
-    e.execute("SELECT user FROM cardsgo.cardsgo_data where user = '{}'".format(u))
+    e.execute("SELECT user FROM cardsgo.cardsgo_data where user = '{}'".format(bleach.clean(u)))
     user = e.fetchall()
     if (len(user) > 0):
         e = conn.cursor()
-        e.execute("SELECT CONCAT(UNIX_TIMESTAMP(expiration), '000') as expiration, data FROM cardsgo.cardsgo_data where user = '{}';".format(u))
+        e.execute("SELECT CONCAT(UNIX_TIMESTAMP(expiration), '000') as expiration, data FROM cardsgo.cardsgo_data where user = '{}';".format(bleach.clean(u)))
         row_headers=[x[0] for x in e.description] 
         cards = e.fetchall()
         json_data=[]
@@ -101,10 +101,10 @@ def get_data():
     else:
         try:
             e = conn.cursor()
-            e.execute("INSERT INTO cardsgo.cardsgo_data (expiration, user, data) VALUES ('{}', '{}', '{}');".format(dt_string, u, raw_cards))
+            e.execute("INSERT INTO cardsgo.cardsgo_data (expiration, user, data) VALUES ('{}', '{}', '{}');".format(bleach.clean(dt_string), bleach.clean(u), bleach.clean(raw_cards)))
             conn.commit()
             cards = e.fetchall()
-            e.execute("SELECT CONCAT(UNIX_TIMESTAMP(expiration), '000') as expiration, data FROM cardsgo.cardsgo_data where user = '{}';".format(u))
+            e.execute("SELECT CONCAT(UNIX_TIMESTAMP(expiration), '000') as expiration, data FROM cardsgo.cardsgo_data where user = '{}';".format(bleach.clean(u)))
             row_headers=[x[0] for x in e.description] 
             cards = e.fetchall()
             json_data=[]

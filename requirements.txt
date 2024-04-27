@@ -4,3 +4,4 @@ mysql.connector
 flask
 mysql-connector-python
 flask-cors
+bleach
