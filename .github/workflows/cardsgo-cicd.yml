@@ -25,7 +25,7 @@ jobs:
           args:
             -Dsonar.projectKey=cardsgo
             -Dsonar.organization=Aleixo42
-            
+            -Dsonar.branch.name=master
             -Dsonar.language=python
 
   push_to_registry:
