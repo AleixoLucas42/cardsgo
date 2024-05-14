@@ -74,7 +74,7 @@ def save_data():
 
 @app.route('/cards', methods=['GET'])
 def get_data():
-    delete_expired_cards()
+    #delete_expired_cards() disable for now
     global raw_cards
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%m") #calculate a month+
