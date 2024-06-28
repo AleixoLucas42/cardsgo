@@ -33,7 +33,7 @@ def delete_expired_cards():
     user = database_user,
     password = database_passwd,
     database = database_db,
-    auth_plugin='mysql_native_password'
+    auth_plugin='caching_sha2_password'
     )
     e = conn.cursor()
     query = "select id_cardsgo, user from cardsgo.cardsgo_data where DATE_FORMAT(expiration, '%Y-%m-%"+"d') <= DATE_FORMAT(NOW(), '%Y-%m-%"+"d')"
@@ -63,7 +63,7 @@ def save_data():
     user = database_user,
     password = database_passwd,
     database = database_db,
-    auth_plugin='mysql_native_password'
+    auth_plugin='caching_sha2_password'
     )
     e = conn.cursor()
     e.execute("UPDATE cardsgo.cardsgo_data SET expiration = '{}', data = '{}' WHERE (user = '{}');".format(bleach.clean(expiration), bleach.clean(json.replace('\'', '\\"')), bleach.clean(user)))
@@ -84,7 +84,7 @@ def get_data():
     user = database_user,
     password = database_passwd,
     database = database_db,
-    auth_plugin='mysql_native_password'
+    auth_plugin='caching_sha2_password'
     )
     e = conn.cursor()
     e.execute("SELECT user FROM cardsgo.cardsgo_data where user = '{}'".format(bleach.clean(u)))
