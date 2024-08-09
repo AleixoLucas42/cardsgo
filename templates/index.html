@@ -13,6 +13,12 @@
     <!-- MY JS -->
     <script src="{{url_for('static', filename = 'index.js')}}"></script>
     <title>Cards GO!</title>
+    <style>
+        .div-separator {
+            border-right: 1px solid black;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body style="height: 100vh;">
@@ -43,22 +49,22 @@
     </container>
     <div class="uk-container" style="margin-top: 20px;">
         <div class="uk-child-width-1-5@s" uk-grid>
-            <div>
+            <div class="div-separator">
                 <h4><span uk-icon="bookmark"></span> To-do</h4>
                 <div uk-sortable="group: sortable-group" id="Todo">
                 </div>
             </div>
-            <div>
+            <div class="div-separator">
                 <h4><span uk-icon="code"></span> Doing</h4>
                 <div uk-sortable="group: sortable-group" id="Doing">
                 </div>
             </div>
-            <div>
+            <div class="div-separator">
                 <h4><span uk-icon="lock"></span> Blocked</h4>
                 <div uk-sortable="group: sortable-group" id="Blocked">
                 </div>
             </div>
-            <div>
+            <div class="div-separator">
                 <h4><span uk-icon="check"></span> Done</h4>
                 <div uk-sortable="group: sortable-group" id="Done">
                 </div>
