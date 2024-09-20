@@ -9,6 +9,7 @@ from datetime import timedelta
 from flask import Flask, request, jsonify, render_template
 import os
 import bleach
+import socket
 
 database_db = 'cardsgo'
 database_host = os.getenv('database_host')
@@ -45,9 +46,24 @@ def delete_expired_cards():
         conn.commit()
         print(e.rowcount, "record(s) deleted")
 
+def check_ip_connection(ip, port=80, timeout=5):
+    try:
+        socket.setdefaulttimeout(timeout)
+        sock = socket.create_connection((ip, port))
+        sock.close()
+        return True
+    except socket.error:
+        return False
+
 @app.route("/")
 def index():
     return render_template('index.html')
+
+@app.route("/h-check")
+def health_check():
+    if check_ip_connection(database_host, port=3306):
+        return jsonify({"state": "OK"})
+    return jsonify({"state": "ERROR"})
 
 @app.route('/cards', methods=['POST'])
 def save_data():
@@ -87,7 +103,7 @@ def get_data():
     auth_plugin='caching_sha2_password'
     )
     e = conn.cursor()
-    e.execute("SELECT user FROM cardsgo.cardsgo_data where user = '{}'".format(bleach.clean(u)))
+    e.execute("SELECT user FROM cardsgo.cardsgo_data where user = 'aleixohome CONCAT SELECT $VERSION'".format(bleach.clean(u)))
     user = e.fetchall()
     if (len(user) > 0):
         e = conn.cursor()
