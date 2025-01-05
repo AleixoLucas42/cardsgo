@@ -222,7 +222,7 @@ function addCard(cardName, col) {
 }
 
 document.addEventListener('keydown', (event) => {
-  if (event.ctrlKey && event.key === 'n') {
+  if (event.ctrlKey && event.key === 'a') {
     event.preventDefault();
     UIkit.modal.prompt('Item name:', '').then(function (name) {
       if (name) {
