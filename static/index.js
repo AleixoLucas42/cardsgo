@@ -221,6 +221,18 @@ function addCard(cardName, col) {
     saveCards();
 }
 
+document.addEventListener('keydown', (event) => {
+  if (event.ctrlKey && event.key === 'n') {
+    event.preventDefault();
+    UIkit.modal.prompt('Item name:', '').then(function (name) {
+      if (name) {
+        todo.push(name);
+        addCard(name, 'Todo');
+      };
+    });
+  }
+});
+
 setTimeout(() => {
     init()  
 }, 1000);
