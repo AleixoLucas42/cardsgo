@@ -25,7 +25,7 @@ allowed_origins = [
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": allowed_origins}})
 
-raw_cards = '{"todo": ["Example card"],"doing": [],"done": [],"blocked": []}'
+raw_cards = '{"todo": [{"id": "Example Card", "weekday": "Any"}],"doing": [],"done": [],"blocked": []}'
 
 def delete_expired_cards():
     print("Verificando se há registros a serem excluidos")
