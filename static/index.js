@@ -199,7 +199,7 @@ function triggerSave() {
 
 function createCardData(cardName, weekday) {
   return {
-    id: new Date().getTime() + cardName,
+    id: new Date().getTime(),
     name: cardName,
     weekday: weekday
   }
