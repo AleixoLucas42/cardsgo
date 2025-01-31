@@ -235,12 +235,12 @@ function addCard(cardName, weekday = 'Any', col) {
 
 
   let innerHead = document.createElement('div');
-  innerHead.className = 'uk-card-header';
+  // innerHead.className = 'uk-card-header';
   innerHead.appendChild(innerCardBadge);
   innerCard.appendChild(innerHead);
 
   let innerFooter = document.createElement('div');
-  innerFooter.className = 'uk-card-footer';
+  innerFooter.className = 'uk-cover-container uk-margin';
   innerFooter.textContent = cardName;
 
   innerCard.appendChild(innerFooter);
