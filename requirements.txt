@@ -5,3 +5,4 @@ flask
 mysql-connector-python
 flask-cors
 bleach
+livereload

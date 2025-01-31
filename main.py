@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 from datetime import datetime
+from livereload import Server
 import json
 import mysql.connector
 from flask_cors import CORS
@@ -130,4 +131,9 @@ def get_data():
         except Exception as error:
             print("Oops!", str(error), "occurred.")
 
-app.run(host="0.0.0.0", port=5000)
+if __name__ == '__main__':
+    server = Server(app.wsgi_app)
+    server.watch('templates/*.html')
+    server.watch('static/css/*.css')
+    server.watch('static/js/*.js')  
+    server.serve(host='0.0.0.0', port=5000)

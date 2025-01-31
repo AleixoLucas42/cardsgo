@@ -2,87 +2,116 @@
 <html lang="ptbr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/css/uikit.min.css" />
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/js/uikit-icons.min.js"></script>
-    <!-- MY JS -->
-    <script src="{{url_for('static', filename = 'index.js')}}"></script>
-    <title>Cards GO!</title>
-    <style>
-        .div-separator {
-            border-left: 1px solid rgba(177, 177, 177, 0.445);
-            padding: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/css/uikit.min.css" />
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/js/uikit-icons.min.js"></script>
+  <!-- MY JS -->
+  <script src="{{url_for('static', filename = 'index.js')}}"></script>
+  <title>Cards GO!</title>
+  <style>
+    .div-separator {
+      border-left: 1px solid rgba(177, 177, 177, 0.445);
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body style="height: 100vh;">
-    <container>
-        <nav class="uk-navbar-container" uk-navbar>
-            <div class="uk-navbar-left">
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="#">cards go</a></li>
-                    <li>
-                        <a id="add-modal-prompt" title="ctrl+a">Add Card</a>
-                    </li>
-                    <li>
-                        <a href="#" uk-toggle="target: #modal-info">INFO</a>
-                    </li>
-                    <li>
-                        <a href="#" onclick="saveCards()">SAVE</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="uk-navbar-right">
-                <ul class="uk-navbar-nav">
-                    <li>
-                        <a class="uk-icon-link" href="javascript:void(0)" id="idproject" uk-icon="bookmark" onclick="window.location.href = window.location.protocol + '//' + window.location.host;"></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </container>
-    <div class="uk-container" style="margin-top: 20px;">
-        <div class="uk-child-width-1-5@s" uk-grid>
-            <div class="div-separator">
-                <h4><span uk-icon="bookmark"></span> To-do</h4>
-                <div uk-sortable="group: sortable-group" id="Todo">
-                </div>
-            </div>
-            <div class="div-separator">
-                <h4><span uk-icon="code"></span> Doing</h4>
-                <div uk-sortable="group: sortable-group" id="Doing">
-                </div>
-            </div>
-            <div class="div-separator">
-                <h4><span uk-icon="lock"></span> Blocked</h4>
-                <div uk-sortable="group: sortable-group" id="Blocked">
-                </div>
-            </div>
-            <div class="div-separator">
-                <h4><span uk-icon="check"></span> Done</h4>
-                <div uk-sortable="group: sortable-group" id="Done">
-                </div>
-            </div>
-            <div class="div-separator">
-                <h4><span uk-icon="trash"></span> Trash</h4>
-                <div uk-sortable="group: sortable-group" id="Trash">
-                </div>
-            </div>
+  <container>
+    <nav class="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a href="#">cards go</a></li>
+          <li>
+            <a id="add-modal-prompt" title="ctrl+a">Add Card</a>
+          </li>
+          <li>
+            <a href="#" onclick="saveCards()">SAVE</a>
+          </li>
+          <li>
+            <a href="#" uk-toggle="target: #modal-wday">WEEKDAY</a>
+          </li>
+          <li>
+            <a href="#" uk-toggle="target: #modal-info">INFO</a>
+          </li>
+        </ul>
+      </div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li>
+            <a class="uk-icon-link" href="javascript:void(0)" id="idproject" uk-icon="bookmark"
+              onclick="window.location.href = window.location.protocol + '//' + window.location.host;"></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </container>
+  <div class="uk-container" style="margin-top: 20px;">
+    <div class="uk-child-width-1-5@s" uk-grid>
+      <div class="div-separator">
+        <h4><span uk-icon="bookmark"></span> To-do</h4>
+        <div uk-sortable="group: sortable-group" id="Todo">
         </div>
+      </div>
+      <div class="div-separator">
+        <h4><span uk-icon="code"></span> Doing</h4>
+        <div uk-sortable="group: sortable-group" id="Doing">
+        </div>
+      </div>
+      <div class="div-separator">
+        <h4><span uk-icon="lock"></span> Blocked</h4>
+        <div uk-sortable="group: sortable-group" id="Blocked">
+        </div>
+      </div>
+      <div class="div-separator">
+        <h4><span uk-icon="check"></span> Done</h4>
+        <div uk-sortable="group: sortable-group" id="Done">
+        </div>
+      </div>
+      <div class="div-separator">
+        <h4><span uk-icon="trash"></span> Trash</h4>
+        <div uk-sortable="group: sortable-group" id="Trash">
+        </div>
+      </div>
+    </div>
 </body>
 <div id="modal-info" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <h2 class="uk-modal-title">How it Works</h2>
-        <p>This is a simple Kanban where you can add and move cards between 4 steps, to change to another project, just click on your project name on top right corner. Of course, this site is public, so another person can access your annotaions, so, don't put any sensitive data on it.<br>Please, don't try anything silly like DOS attacks or any kind of attack, because your are going to be blocked indefinitely.<br><a>https://github.com/AleixoLucas42/cardsgo</a></p>
-    </div>
+  <div class="uk-modal-dialog uk-modal-body">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <h2 class="uk-modal-title">How it Works</h2>
+    <p>This is a simple Kanban where you can add and move cards between 4 steps, to change to another project, just
+      click on your project name on top right corner. Of course, this site is public, so another person can access your
+      annotaions, so, don't put any sensitive data on it.<br>Please, don't try anything silly like DOS attacks or any
+      kind of attack, because your are going to be blocked
+      indefinitely.<br><a>https://github.com/AleixoLucas42/cardsgo</a></p>
+  </div>
 </div>
+<div id="modal-wday" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <button class="uk-modal-close-default" type="button" uk-close id="close-weekday-filter"></button>
+    <h2 class="uk-modal-title">Weekday</h2>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-select">Select</label>
+      <div class="uk-form-controls">
+        <select class="uk-select" id="form-horizontal-select" onchange="filterData(this)">
+          <option value="Any">Any</option>
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
 </html>
 
 

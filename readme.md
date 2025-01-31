@@ -15,17 +15,6 @@ Hello fellow friend, this is just a simple project Kanban where you can add and 
 - Bare metal VM (Oracle Always Free)
 <hr>
 
-### My manual ci/cd (lol)
-- Crontab:
-   - `* * * * 2 git -C /home/ubuntu/cardsgo pull;`
-- Git Hook:
-   - post-merge:
-     - `bash ~/cardsgo/build.sh`
-
-Actually, every minute the cronjob run `git pull` in the repository, and when a change is detected, do the git pull and the post-merge bash script.
-(I could do with cloudbuild or jenkins, etc... but I made this way just to be fast)
-<hr>
-
 Well, this is it, nothing special, and if is usefull for you, you can access [CARDS GO!](https://cardsgo.ddns.net)
 <hr>
 
@@ -45,10 +34,5 @@ Well, this is it, nothing special, and if is usefull for you, you can access [CA
 
 So, this is the second part of this project. Basically I started a homelab after finished this project so I thought "why not put this app inside my infrastructure and host myself and protect myself the way I can?" Ok, let's do it.
 
-## What do I did
-- Changed some things to make the project work inside kubernetes
-- I had to change some things on code to use port 8400
-- I created a NAT to translate port 8400 of my firewall wan to kubernetes inside my homelab
-- I made some firewall rules and some monitoring stuff using opnSENSE/grafana/prometheus
-- [CARDSGO KUBERNETES MANIFESTS](https://github.com/AleixoLucas42/homelab/tree/main/virtual%20machines/ubuntu-minikube/Kubernetes/cardsgo)
+## GitOps Repo
 - [HOMELAB PROJECT](https://github.com/AleixoLucas42/homelab) <<<<<<<<<<<
