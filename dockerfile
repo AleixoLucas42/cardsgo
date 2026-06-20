@@ -1,4 +1,4 @@
-FROM python:3.9.18-bullseye
+FROM python:3.11-slim-bullseye
 
 WORKDIR /app
 
@@ -11,8 +11,11 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 USER $USERNAME
 
+# 2. Garante que os pacotes instalados pelo usuário não-root sejam achados
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY main.py .
 COPY templates/index.html /app/templates/index.html
